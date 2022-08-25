@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
+
 import '../../models/order_model.dart';
 import '../../models/orders_model.dart';
 import '../../models/product_model.dart';
-
 
 class OrderProvider extends ChangeNotifier {
   OrdersModel orders = OrdersModel(id: "01", orders: [], createTime: "", total: 0.0);
@@ -45,7 +45,7 @@ class OrderProvider extends ChangeNotifier {
 
   Order getOrder(Product product) {
     if(orders.orders.isEmpty) return Order(product: product, total: 0.0, quantity: 0);
-    Order order = orders.orders.firstWhere((order) => order.product.id == product.id);
+    Order order = orders.orders.firstWhere((order) => order.product.id == product.id, orElse: () => Order(product: product, total: 0.0, quantity: 0));
     return order;
   }
 
@@ -76,5 +76,18 @@ class OrderProvider extends ChangeNotifier {
       orders.orders[index] = order;
       notifyListeners();
     }
+  }
+
+  void deleteAll(BuildContext context){
+    orders.orders.clear();
+    orders.total = 0;
+    orderNumber = 0;
+    Navigator.pop(context);
+    notifyListeners();
+  }
+
+  void deleteOrder(Order order){
+    removeToCart(order.product,quantity: order.quantity);
+    notifyListeners();
   }
 }

@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:ui_sneaker_app/pages/home/home_provider.dart';
 
 import '../../views/category_view.dart';
+import '../order/order_provider.dart';
 import '../shop_page.dart';
 
 class HomePage extends StatelessWidget {
@@ -39,12 +40,37 @@ class HomePage extends StatelessWidget {
               ],
 
             ),
-            actions: const [
-              Icon(CupertinoIcons.bell,color: Colors.black,size: 25,),
+            actions:  [
               Padding(
-                padding: EdgeInsets.only(right: 10,left: 5),
-                child: Icon(CupertinoIcons.heart,color: Colors.black,size: 25,),
+                padding: const EdgeInsets.symmetric(horizontal: 15),
+                child: GestureDetector(
+                  onTap: () => homeProvider.onTapBasket(context: context),
+                  child: Stack(
+                    alignment: Alignment.topRight,
+                    children: [
+                      const Padding(
+                        padding: EdgeInsets.all(8.0),
+                        child: Icon(Icons.shopping_cart, color: Colors.black, size: 35,),
+                      ),
+                      Container(
+                        height: 20,
+                        width: 20,
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                          color: Colors.red,
+                          borderRadius: BorderRadius.circular(50),
+                        ),
+                        child: Consumer<OrderProvider>(
+                            builder: (context, order, child) {
+                              return Text(order.orderNumber.toString(), style: const TextStyle(color: Colors.white),);
+                            }
+                        ),
+                      )
+                    ],
+                  ),
+                ),
               )
+
             ],
 
           ),

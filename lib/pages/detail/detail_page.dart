@@ -45,23 +45,27 @@ class DetailPage extends StatelessWidget {
                     ),
                     Padding(
                       padding: const EdgeInsets.only(bottom: 25),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: List.generate(
-                          product.images.length,
-                              (index) {
-                            return AnimatedContainer(
-                              margin: const EdgeInsets.symmetric(horizontal: 2),
-                              duration: const Duration(milliseconds: 200),
-                              height: 7.5,
-                              width: index == detail.currentIndex ? 20 : 7.5,
-                              decoration: BoxDecoration(
-                                color: Colors.black,
-                                borderRadius: BorderRadius.circular(3.75),
+                      child: Consumer<DetailProvider>(
+                          builder: (context, provider, child) {
+                            return Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: List.generate(
+                                product.images.length,
+                                    (index) {
+                                  return AnimatedContainer(
+                                    margin: const EdgeInsets.symmetric(horizontal: 2),
+                                    duration: const Duration(milliseconds: 200),
+                                    height: 7.5,
+                                    width: index == detail.currentIndex ? 20 : 7.5,
+                                    decoration: BoxDecoration(
+                                      color: Colors.black,
+                                      borderRadius: BorderRadius.circular(3.75),
+                                    ),
+                                  );
+                                },
                               ),
                             );
-                          },
-                        ),
+                          }
                       ),
                     ),
                   ],
@@ -77,12 +81,12 @@ class DetailPage extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Flexible(
-                        child: RichText(
-                          overflow: TextOverflow.ellipsis,
-                          text: TextSpan(
-                              style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 25),
-                              text: product.title),
+                      Text(
+                        product.title,
+                        style: const TextStyle(
+                          fontSize: 25,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black,
                         ),
                       ),
                       GestureDetector(
@@ -241,11 +245,11 @@ class DetailPage extends StatelessWidget {
                           Consumer<OrderProvider>(
                               builder: (context, provider, child) {
                                 order = provider.getOrder(product);
-                                return    Flexible(
+                                return Flexible(
                                   child: RichText(
                                     overflow: TextOverflow.ellipsis,
                                     text: TextSpan(
-                                        style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 20),
+                                        style: const TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 20),
                                         text:"${order.total}"),
                                   ),
                                 );

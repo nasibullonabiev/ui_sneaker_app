@@ -4,33 +4,35 @@ import '../../models/category_model.dart';
 import '../../models/product_model.dart';
 import '../../services/mock_data.dart';
 import '../detail/detail_page.dart';
+import '../order/order_page.dart';
 import '../products/products_page.dart';
-
 
 class HomeProvider extends ChangeNotifier {
   int orderNumber = 0;
   List<Category> categories = [];
-  List<Product> products = [];
 
-  void onTapBasket() {
-    // TODO: write your code
+  HomeProvider() {
+    getAllCategories();
+  }
+
+  void onTapBasket({required BuildContext context}) {
+    Navigator.push(context, MaterialPageRoute(builder: (context) => const OrderPage()));
   }
 
   void getAllCategories() {
     categories = categoriesMock.map((category) => Category.fromJson(category)).toList();
+    for(int i = 0; i < categories.length; i++) {
+      categories[i].products = productsMock
+          .where((product) => product["categoryId"] == categories[i].id)
+          .map((product) => Product.fromJson(product)).toList();
+    }
   }
 
-  void getProducts(String categoryId) {
-    products = productsMock
-        .where((product) => product["categoryId"] == categoryId)
-        .map((product) => Product.fromJson(product)).toList();
-  }
-
-  int get gridSize {
-    if(products.length >= 4) {
+  int getGridSize(Category category) {
+    if(category.products.length >= 4) {
       return 4;
     } else {
-      return products.length;
+      return category.products.length;
     }
   }
 
