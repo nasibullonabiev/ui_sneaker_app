@@ -10,10 +10,10 @@
 <img src="screens/home_page_2.png" height="500em" />
 
 ### Detail page
-<img src="screens/detail_page.png" />;
+<img src="screens/detail_page.png" height="500em"/>;
 
 ### Category see all page
-<img src="screens/category_see_all.png" height="500em" />&nbsp;&nbsp;&nbsp;&nbsp;
+<img src="screens/category_see_all.png" height="500em" />;
 
 ### Cart page
 <img src="screens/cart_page.png" height="500em" />&nbsp;&nbsp;&nbsp;&nbsp;
