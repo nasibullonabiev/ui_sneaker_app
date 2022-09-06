@@ -1,16 +1,20 @@
-# ui_sneaker_app
+## 🤓 Author(s)
+**Nasibullo Nabiev**
 
-A new Flutter project.
 
-## Getting Started
+## ScreenShots
+### Home Page
+<img src="screens/home_page.png" height="500em" />
 
-This project is a starting point for a Flutter application.
+### Home Page 2 part
+<img src="screens/home_page_2.png" height="500em" />
 
-A few resources to get you started if this is your first Flutter project:
+### Detail page
+<img src="screens/detail_page.png" />;
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+### Category see all page
+<img src="screens/category_see_all.png" height="500em" />&nbsp;&nbsp;&nbsp;&nbsp;
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### Cart page
+<img src="screens/cart_page.png" height="500em" />&nbsp;&nbsp;&nbsp;&nbsp;
+

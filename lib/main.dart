@@ -23,6 +23,7 @@ class MyApp extends StatelessWidget {
     return ChangeNotifierProvider(
       create: (context) => OrderProvider(),
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         home: MainPage(),
         routes: {
         IntroPage.id : (context) => const IntroPage(),

@@ -1,5 +1,3 @@
-
-
 import 'package:ui_sneaker_app/models/product_model.dart';
 
 class Category {

@@ -1,15 +1,16 @@
 import 'package:ui_sneaker_app/models/product_model.dart';
 
-class Order{
+class Order {
   late Product product;
   late int quantity;
   late double total;
 
-
   Order({
-    required this.product,this.quantity = 0,
-    required this.total
-});
+    required this.product,
+    this.quantity = 0,
+    required this.total,
+  });
+
   Order.fromJson(Map<String, dynamic> json) {
     product = Product.fromJson(json["product"]);
     quantity = json['quantity'];

@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 import 'package:provider/provider.dart';
 
 import '../../models/product_model.dart';
@@ -81,13 +80,10 @@ class DetailPage extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        product.title,
-                        style: const TextStyle(
-                          fontSize: 25,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black,
-                        ),
+                      RichText(
+                      text: TextSpan(
+                        text: product.title,style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 25)
+                      ),
                       ),
                       GestureDetector(
                         onTap: () {
@@ -96,7 +92,7 @@ class DetailPage extends StatelessWidget {
                         child: const Image(
                           height: 35,
                           width: 35,
-                          image: AssetImage("assets/images/heart_icon.png"),
+                          image: AssetImage("assets/images/heart.png"),
                         ),
                       )
                     ],

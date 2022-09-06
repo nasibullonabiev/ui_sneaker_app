@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:ui_sneaker_app/pages/cart/cart_page.dart';
 import 'package:ui_sneaker_app/pages/profile/profile_page.dart';
 import 'package:ui_sneaker_app/pages/wallet/wallet_page.dart';
 
 import '../home/home_page.dart';
+import '../order/order_page.dart';
 import '../orders/orders_page.dart';
 import 'main_provider.dart';
 
@@ -27,7 +27,7 @@ class MainPage extends StatelessWidget {
             controller: mainProvider.pageController,
             children: const [
               HomePage(),
-              CartPage(),
+              OrderPage(),
               OrdersPage(),
               WalletPage(),
               ProfilePage()
